@@ -40,7 +40,27 @@
   <br>
   <hr>
   
-<!-- 物件登録フォーム -->
+  <% i = 0 %>
+  <h3>最寄り駅<%= i += 1 %></h3>
+  <%= form.fields_for :station do |sta| %>
+
+    <!-- 物件登録フォーム -->
+    <div class="field">
+      <%= sta.label '路線名' %>
+      <%= sta.text_field :route %>
+    </div>
+
+    <div class="field">
+      <%= sta.label '駅名' %>
+      <%= sta.text_field :ame %>
+    </div>
+
+    <div class="field">
+      <%= sta.label '徒歩分数' %>
+      <%= sta.text_field :time %>分
+    </div>
+    
+  <% end %>
 
   <div class="actions">
     <%= form.submit '登録する' %>
