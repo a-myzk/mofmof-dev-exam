@@ -8,15 +8,18 @@ class PropertiesController < ApplicationController
 
   # GET /properties/1 or /properties/1.json
   def show
+    @stations = @property.stations
   end
 
   # GET /properties/new
   def new
     @property = Property.new
+    @property.stations.build
   end
 
   # GET /properties/1/edit
   def edit
+    @property.stations.build
   end
 
   # POST /properties or /properties.json
@@ -25,6 +28,8 @@ class PropertiesController < ApplicationController
 
     respond_to do |format|
       if @property.save
+        # reset_session
+        # session[:property] = @property.id
         format.html { redirect_to @property, notice: "Property was successfully created." }
         format.json { render :show, status: :created, location: @property }
       else
@@ -57,13 +62,13 @@ class PropertiesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_property
-      @property = Property.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_property
+    @property = Property.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def property_params
-      params.require(:property).permit(:name, :price, :address, :age, :remark)
-    end
+  # Only allow a list of trusted parameters through.
+  def property_params
+    params.require(:property).permit(:name, :price, :address, :age, :remark, stations_attributes: [:route, :name, :time, :id, :property_id, :_destroy])
+  end
 end
