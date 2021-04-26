@@ -40,9 +40,8 @@
   <br>
   <hr>
   
-  <% i = 0 %>
-  <h3>最寄り駅<%= i += 1 %></h3>
   <%= form.fields_for :stations do |sta| %>
+  <h3>最寄り駅<%= sta.index + 1 %></h3>
 
     <!-- 最寄り駅登録フォーム -->
     <div class="field">
