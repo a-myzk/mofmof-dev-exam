@@ -15,11 +15,13 @@ class PropertiesController < ApplicationController
   def new
     @property = Property.new
     2.times { @property.stations.build }
+    @submit = '登録する'
   end
 
   # GET /properties/1/edit
   def edit
     @property.stations.build
+    @submit = '更新する'
   end
 
   # POST /properties or /properties.json
