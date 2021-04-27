@@ -62,6 +62,11 @@
   <% end %>
 
   <div class="actions">
-    <%= form.submit @submit %>
+    <% if controller.action_name == "new" %>
+      <%= form.submit '登録する' %>
+    <% else controller.action_name == "edit" %>
+      <%= form.submit '更新する' %>
+    <% end %>
   </div>
+  
 <% end %>
