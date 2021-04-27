@@ -18,7 +18,7 @@
     <% @properties.each do |property| %>
       <tr>
         <td><%= property.name %></td>
-        <td><%= property.price %>円</td>
+        <td><%= property.price.to_s(:delimited) %>円</td>
         <td><%= property.address %></td>
         <td><%= property.age %>年</td>
         <td><%= property.remark %></td>
