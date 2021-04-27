@@ -7,7 +7,7 @@
   </p>
   <p>
     <strong>賃料:</strong>
-    <%= @property.price.to_s(:delimited) %>円
+    <%= @property.price.to_s.gsub(/(\d)(?=\d{3}+$)/, '\\1,') %>円
   </p>
   <p>
     <strong>住所:</strong>
